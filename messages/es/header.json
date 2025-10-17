@@ -1,0 +1,14 @@
+{
+  "topBanner": "¡ADQUIERA YA SU TRATAMIENTO!",
+  "nav": {
+    "product": "Producto",
+    "research": "Investigaciones",
+    "contact": "Contacto"
+  },
+  "user": {
+    "account": "Mi Cuenta",
+    "orders": "Mis Pedidos",
+    "logout": "Cerrar Sesión"
+  },
+  "language": "Idioma"
+}

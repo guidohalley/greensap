@@ -1,0 +1,24 @@
+{
+  "header": {
+    "nav": {
+      "home": "Home",
+      "product": "Product",
+      "science": "Science",
+      "testimonials": "Testimonials",
+      "contact": "Contact"
+    },
+    "cta": "Buy now"
+  },
+  "hero": {
+    "title": "Green Sap",
+    "subtitle": "Natural Antioxidant Supplement",
+    "description": "Boost your wellness with the science of nature",
+    "cta": "Learn more"
+  },
+  "footer": {
+    "rights": "© 2025 Green Sap. All rights reserved.",
+    "company": "Company",
+    "legal": "Legal",
+    "contact": "Contact"
+  }
+}

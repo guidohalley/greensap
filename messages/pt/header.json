@@ -1,0 +1,14 @@
+{
+  "topBanner": "ADQUIRA JÁ SEU TRATAMENTO!",
+  "nav": {
+    "product": "Produto",
+    "research": "Pesquisas",
+    "contact": "Contato"
+  },
+  "user": {
+    "account": "Minha Conta",
+    "orders": "Meus Pedidos",
+    "logout": "Sair"
+  },
+  "language": "Idioma"
+}
