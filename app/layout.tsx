@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import { notFound } from 'next/navigation';
 import './globals.css';
 
 const inter = Inter({
@@ -22,12 +21,5 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // Redirigir al middleware para manejo de locales
-  notFound();
-  
-  return (
-    <html lang="es" className={inter.variable}>
-      <body className="antialiased">{children}</body>
-    </html>
-  );
+  return children;
 }
