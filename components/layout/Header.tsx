@@ -9,7 +9,7 @@ import Logo from './Logo';
 
 const NAV_ITEMS = [
   { key: 'product', href: '#producto' },
-  { key: 'research', href: '#investigaciones' },
+  { key: 'science', href: '#investigaciones' },
   { key: 'contact', href: '#contacto' },
 ] as const;
 
