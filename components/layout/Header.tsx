@@ -53,7 +53,7 @@ export default function Header() {
       <div className="bg-primary-dark text-white">
         <div className="container mx-auto px-4 py-2 text-center">
           <p className="text-sm md:text-base font-medium tracking-wide">
-            {t('topBanner')}
+            {t('header.topBanner')}
           </p>
         </div>
       </div>
@@ -74,7 +74,7 @@ export default function Header() {
                   href={item.href}
                   className="text-gray-700 hover:text-primary-dark transition-colors duration-200 font-medium"
                 >
-                  {t(`nav.${item.key}`)}
+                  {t(`header.nav.${item.key}`)}
                 </a>
               </li>
             ))}
@@ -87,7 +87,7 @@ export default function Header() {
               <button
                 onClick={() => setIsLangDropdownOpen(!isLangDropdownOpen)}
                 className="flex items-center space-x-2 px-3 py-2 rounded-lg hover:bg-gray-100 transition-colors"
-                aria-label={t('language')}
+                aria-label={t('header.language')}
               >
                 <span className="text-xl">{currentLanguage?.flag}</span>
                 <span className="text-sm font-medium text-gray-700">
@@ -144,17 +144,17 @@ export default function Header() {
                     href="#account"
                     className="block px-4 py-2 text-sm text-gray-700 hover:bg-primary-light/20 transition-colors"
                   >
-                    {t('user.account')}
+                    {t('header.user.account')}
                   </a>
                   <a
                     href="#orders"
                     className="block px-4 py-2 text-sm text-gray-700 hover:bg-primary-light/20 transition-colors"
                   >
-                    {t('user.orders')}
+                    {t('header.user.orders')}
                   </a>
                   <hr className="my-2 border-gray-200" />
                   <button className="block w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50 transition-colors">
-                    {t('user.logout')}
+                    {t('header.user.logout')}
                   </button>
                 </div>
               )}
@@ -184,7 +184,7 @@ export default function Header() {
                     className="block text-lg text-gray-700 hover:text-primary-dark transition-colors font-medium"
                     onClick={() => setIsMenuOpen(false)}
                   >
-                    {t(`nav.${item.key}`)}
+                    {t(`header.nav.${item.key}`)}
                   </a>
                 ))}
               </nav>
@@ -194,7 +194,7 @@ export default function Header() {
               {/* Language Selector */}
               <div className="space-y-3">
                 <p className="text-sm font-semibold text-gray-600 uppercase tracking-wide">
-                  {t('language')}
+                  {t('header.language')}
                 </p>
                 {LANGUAGES.map((lang) => (
                   <Link
@@ -223,14 +223,14 @@ export default function Header() {
                   onClick={() => setIsMenuOpen(false)}
                 >
                   <User size={20} className="text-gray-700" />
-                  <span className="font-medium text-gray-700">{t('user.account')}</span>
+                  <span className="font-medium text-gray-700">{t('header.user.account')}</span>
                 </a>
                 <a
                   href="#orders"
                   className="block px-4 py-3 rounded-lg hover:bg-gray-100 transition-colors text-gray-700"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  {t('user.orders')}
+                  {t('header.user.orders')}
                 </a>
                 <button className="block w-full text-left px-4 py-3 rounded-lg text-red-600 hover:bg-red-50 transition-colors">
                   {t('user.logout')}
