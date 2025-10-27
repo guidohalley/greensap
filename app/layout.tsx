@@ -21,5 +21,11 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return children;
+  return (
+    <html lang="es" className={inter.variable}>
+      <body className={inter.className}>
+        {children}
+      </body>
+    </html>
+  );
 }

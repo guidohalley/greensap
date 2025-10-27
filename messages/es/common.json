@@ -1,5 +1,6 @@
 {
   "header": {
+    "topBanner": "¡ADQUIERA YA SU TRATAMIENTO!",
     "nav": {
       "home": "Inicio",
       "product": "Producto",
@@ -7,7 +8,13 @@
       "testimonials": "Testimonios",
       "contact": "Contacto"
     },
-    "cta": "Comprar ahora"
+    "cta": "Comprar ahora",
+    "user": {
+      "account": "Mi Cuenta",
+      "orders": "Mis Pedidos",
+      "logout": "Cerrar Sesión"
+    },
+    "language": "Idioma"
   },
   "hero": {
     "title": "Green Sap",
