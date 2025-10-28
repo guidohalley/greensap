@@ -1,4 +1,4 @@
-import { setRequestLocale } from 'next-intl/server';
+import { unstable_setRequestLocale } from 'next-intl/server';
 import HeroSection from '@/components/sections/HeroSection';
 import AboutSection from '@/components/sections/AboutSection';
 import HerbalComposition from '@/components/sections/HerbalComposition';
@@ -7,7 +7,7 @@ import ScientificStudies from '@/components/sections/ScientificStudies';
 import ContactCTA from '@/components/sections/ContactCTA';
 
 type Props = {
-  params: Promise<{ locale: string }>;
+  params: { locale: string };
 };
 
 export function generateStaticParams() {
@@ -18,11 +18,11 @@ export function generateStaticParams() {
   ];
 }
 
-export default async function HomePage({ params }: Props) {
-  const { locale } = await params;
+export default function HomePage({ params }: Props) {
+  const { locale } = params;
   
-  // Habilitar renderizado estático
-  setRequestLocale(locale);
+  // CRÍTICO: Habilitar renderizado estático para next-intl 3.x
+  unstable_setRequestLocale(locale);
 
   return (
     <div className="pt-16">

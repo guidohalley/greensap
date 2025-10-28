@@ -22,14 +22,12 @@ export default getRequestConfig(async ({ locale }) => {
     }
 
     return {
-      locale,
       messages,
     };
   } catch (error) {
     console.error('Error in i18n configuration:', error);
     // Configuración de fallback completa
     return {
-      locale: 'es',
       messages: (await import('./messages/es/common.json')).default,
     };
   }

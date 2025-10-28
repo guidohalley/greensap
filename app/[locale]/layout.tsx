@@ -1,6 +1,6 @@
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
-import { setRequestLocale } from 'next-intl/server';
+import { unstable_setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { Inter } from 'next/font/google';
 import { locales, type Locale } from '@/i18n';
@@ -24,17 +24,17 @@ export default async function LocaleLayout({
   params,
 }: {
   children: React.ReactNode;
-  params: Promise<{ locale: string }>;
+  params: { locale: string };
 }) {
-  const { locale } = await params;
+  const { locale } = params;
 
   // Validar que el locale es soportado
   if (!locales.includes(locale as Locale)) {
     notFound();
   }
 
-  // Configurar el locale para el renderizado estático
-  setRequestLocale(locale);
+  // CRÍTICO: Habilitar renderizado estático para next-intl 3.x
+  unstable_setRequestLocale(locale);
 
   const messages = await getMessages();
 
