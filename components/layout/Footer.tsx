@@ -1,10 +1,8 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 
 export default function Footer() {
-  const t = useTranslations('footer');
   const currentYear = new Date().getFullYear();
 
   return (
@@ -23,7 +21,7 @@ export default function Footer() {
 
           {/* Company Links */}
           <div>
-            <h4 className="font-semibold mb-4">{t('company')}</h4>
+            <h4 className="font-semibold mb-4">Empresa</h4>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link href="#about" className="text-gray-200 hover:text-white transition-colors">
@@ -37,7 +35,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="#contact" className="text-gray-200 hover:text-white transition-colors">
-                  {t('contact')}
+                  Contacto
                 </Link>
               </li>
             </ul>
@@ -45,7 +43,7 @@ export default function Footer() {
 
           {/* Legal Links */}
           <div>
-            <h4 className="font-semibold mb-4">{t('legal')}</h4>
+            <h4 className="font-semibold mb-4">Legal</h4>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link href="#privacy" className="text-gray-200 hover:text-white transition-colors">
@@ -63,7 +61,7 @@ export default function Footer() {
 
         {/* Copyright */}
         <div className="border-t border-primary-light/30 mt-8 pt-8 text-center text-sm text-gray-200">
-          <p>{t('rights').replace('2025', String(currentYear))}</p>
+          <p>© {currentYear} Green Sap. Todos los derechos reservados.</p>
         </div>
       </div>
     </footer>

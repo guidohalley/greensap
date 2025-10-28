@@ -1,6 +1,5 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { Menu, X, User, ChevronDown } from 'lucide-react';
@@ -8,38 +7,22 @@ import { useState, useRef, useEffect } from 'react';
 import Logo from './Logo';
 
 const NAV_ITEMS = [
-  { key: 'product', href: '#producto' },
-  { key: 'science', href: '#investigaciones' },
-  { key: 'contact', href: '#contacto' },
-] as const;
-
-const LANGUAGES = [
-  { code: 'es', label: 'Español', flag: '🇪🇸' },
-  { code: 'en', label: 'English', flag: '🇬🇧' },
-  { code: 'pt', label: 'Português', flag: '🇧🇷' },
+  { key: 'product', label: 'Producto', href: '#producto' },
+  { key: 'science', label: 'Ciencia', href: '#investigaciones' },
+  { key: 'contact', label: 'Contacto', href: '#contacto' },
 ] as const;
 
 export default function Header() {
-  const t = useTranslations();
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
-  const [isLangDropdownOpen, setIsLangDropdownOpen] = useState(false);
   const userDropdownRef = useRef<HTMLDivElement>(null);
-  const langDropdownRef = useRef<HTMLDivElement>(null);
 
-  // Extraer el locale actual de la ruta
-  const currentLocale = pathname.split('/')[1] || 'es';
-  const currentLanguage = LANGUAGES.find((lang) => lang.code === currentLocale);
-
-  // Cerrar dropdowns al hacer click fuera
+  // Cerrar dropdown al hacer click fuera
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (userDropdownRef.current && !userDropdownRef.current.contains(event.target as Node)) {
         setIsUserDropdownOpen(false);
-      }
-      if (langDropdownRef.current && !langDropdownRef.current.contains(event.target as Node)) {
-        setIsLangDropdownOpen(false);
       }
     };
 
@@ -53,7 +36,7 @@ export default function Header() {
       <div className="bg-primary-dark text-white">
         <div className="container mx-auto px-4 py-2 text-center">
           <p className="text-sm md:text-base font-medium tracking-wide">
-            {t('header.topBanner')}
+            ¡ADQUIERA YA SU TRATAMIENTO!
           </p>
         </div>
       </div>
@@ -62,7 +45,7 @@ export default function Header() {
       <nav className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link href={`/${currentLocale}`} className="flex-shrink-0">
+          <Link href="/" className="flex-shrink-0">
             <Logo />
           </Link>
 
@@ -74,53 +57,14 @@ export default function Header() {
                   href={item.href}
                   className="text-gray-700 hover:text-primary-dark transition-colors duration-200 font-medium"
                 >
-                  {t(`header.nav.${item.key}`)}
+                  {item.label}
                 </a>
               </li>
             ))}
           </ul>
 
-          {/* Desktop Actions: Language + User */}
+          {/* Desktop Actions */}
           <div className="hidden md:flex items-center space-x-4">
-            {/* Language Selector Dropdown */}
-            <div className="relative" ref={langDropdownRef}>
-              <button
-                onClick={() => setIsLangDropdownOpen(!isLangDropdownOpen)}
-                className="flex items-center space-x-2 px-3 py-2 rounded-lg hover:bg-gray-100 transition-colors"
-                aria-label={t('header.language')}
-              >
-                <span className="text-xl">{currentLanguage?.flag}</span>
-                <span className="text-sm font-medium text-gray-700">
-                  {currentLanguage?.code.toUpperCase()}
-                </span>
-                <ChevronDown
-                  size={16}
-                  className={`text-gray-600 transition-transform ${
-                    isLangDropdownOpen ? 'rotate-180' : ''
-                  }`}
-                />
-              </button>
-
-              {/* Language Dropdown */}
-              {isLangDropdownOpen && (
-                <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-2 animate-in fade-in slide-in-from-top-2 duration-200">
-                  {LANGUAGES.map((lang) => (
-                    <Link
-                      key={lang.code}
-                      href={`/${lang.code}`}
-                      onClick={() => setIsLangDropdownOpen(false)}
-                      className={`flex items-center space-x-3 px-4 py-2 hover:bg-primary-light/20 transition-colors ${
-                        currentLocale === lang.code ? 'bg-primary-light/10' : ''
-                      }`}
-                    >
-                      <span className="text-xl">{lang.flag}</span>
-                      <span className="text-sm font-medium text-gray-700">{lang.label}</span>
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
-
             {/* User Dropdown */}
             <div className="relative" ref={userDropdownRef}>
               <button
@@ -144,17 +88,17 @@ export default function Header() {
                     href="#account"
                     className="block px-4 py-2 text-sm text-gray-700 hover:bg-primary-light/20 transition-colors"
                   >
-                    {t('header.user.account')}
+                    Mi Cuenta
                   </a>
                   <a
                     href="#orders"
                     className="block px-4 py-2 text-sm text-gray-700 hover:bg-primary-light/20 transition-colors"
                   >
-                    {t('header.user.orders')}
+                    Mis Pedidos
                   </a>
                   <hr className="my-2 border-gray-200" />
                   <button className="block w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50 transition-colors">
-                    {t('header.user.logout')}
+                    Cerrar Sesión
                   </button>
                 </div>
               )}
@@ -184,34 +128,10 @@ export default function Header() {
                     className="block text-lg text-gray-700 hover:text-primary-dark transition-colors font-medium"
                     onClick={() => setIsMenuOpen(false)}
                   >
-                    {t(`header.nav.${item.key}`)}
+                    {item.label}
                   </a>
                 ))}
               </nav>
-
-              <hr className="border-gray-200" />
-
-              {/* Language Selector */}
-              <div className="space-y-3">
-                <p className="text-sm font-semibold text-gray-600 uppercase tracking-wide">
-                  {t('header.language')}
-                </p>
-                {LANGUAGES.map((lang) => (
-                  <Link
-                    key={lang.code}
-                    href={`/${lang.code}`}
-                    onClick={() => setIsMenuOpen(false)}
-                    className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors ${
-                      currentLocale === lang.code
-                        ? 'bg-primary-dark text-white'
-                        : 'hover:bg-gray-100'
-                    }`}
-                  >
-                    <span className="text-xl">{lang.flag}</span>
-                    <span className="font-medium">{lang.label}</span>
-                  </Link>
-                ))}
-              </div>
 
               <hr className="border-gray-200" />
 
@@ -223,17 +143,17 @@ export default function Header() {
                   onClick={() => setIsMenuOpen(false)}
                 >
                   <User size={20} className="text-gray-700" />
-                  <span className="font-medium text-gray-700">{t('header.user.account')}</span>
+                  <span className="font-medium text-gray-700">Mi Cuenta</span>
                 </a>
                 <a
                   href="#orders"
                   className="block px-4 py-3 rounded-lg hover:bg-gray-100 transition-colors text-gray-700"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  {t('header.user.orders')}
+                  Mis Pedidos
                 </a>
                 <button className="block w-full text-left px-4 py-3 rounded-lg text-red-600 hover:bg-red-50 transition-colors">
-                  {t('header.user.logout')}
+                  Cerrar Sesión
                 </button>
               </div>
             </div>
