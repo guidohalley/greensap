@@ -1,11 +1,5 @@
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
-import HeroSection from '@/components/sections/HeroSection';
-import AboutSection from '@/components/sections/AboutSection';
-import HerbalComposition from '@/components/sections/HerbalComposition';
-import TestimonialsSection from '@/components/sections/TestimonialsSection';
-import ScientificStudies from '@/components/sections/ScientificStudies';
-import ContactCTA from '@/components/sections/ContactCTA';
 
 export default function HomePage() {
   return (
@@ -31,13 +25,17 @@ export default function HomePage() {
             </div>
           </section>
 
-          {/* Secciones de la landing */}
-          <HeroSection />
-          <AboutSection />
-          <HerbalComposition />
-          <TestimonialsSection />
-          <ScientificStudies />
-          <ContactCTA />
+          {/* Contenido adicional */}
+          <section className="py-20 bg-white">
+            <div className="container mx-auto px-4 text-center">
+              <h2 className="text-3xl font-bold text-primary-dark mb-8">
+                Bienvenido a Green Sap
+              </h2>
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                Tu suplemento antioxidante natural está aquí. Pronto agregaremos más contenido a esta página.
+              </p>
+            </div>
+          </section>
         </div>
       </main>
       <Footer />
