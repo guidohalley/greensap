@@ -1,3 +1,4 @@
+import { setRequestLocale } from 'next-intl/server';
 import HeroSection from '@/components/sections/HeroSection';
 import AboutSection from '@/components/sections/AboutSection';
 import HerbalComposition from '@/components/sections/HerbalComposition';
@@ -5,7 +6,24 @@ import TestimonialsSection from '@/components/sections/TestimonialsSection';
 import ScientificStudies from '@/components/sections/ScientificStudies';
 import ContactCTA from '@/components/sections/ContactCTA';
 
-export default function HomePage() {
+type Props = {
+  params: Promise<{ locale: string }>;
+};
+
+export function generateStaticParams() {
+  return [
+    { locale: 'es' },
+    { locale: 'en' },
+    { locale: 'pt' }
+  ];
+}
+
+export default async function HomePage({ params }: Props) {
+  const { locale } = await params;
+  
+  // Habilitar renderizado estático
+  setRequestLocale(locale);
+
   return (
     <div className="pt-16">
       {/* Hero Section */}

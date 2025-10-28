@@ -11,6 +11,13 @@ export default createMiddleware({
 });
 
 export const config = {
-  // Aplicar el middleware a todas las rutas excepto las estáticas
-  matcher: ['/', '/(es|en|pt)/:path*', '/((?!_next|_vercel|.*\\..*).*)'],
+  // Matcher más específico para evitar conflictos
+  matcher: [
+    // Incluir todas las rutas principales
+    '/',
+    // Incluir rutas con locales
+    '/(es|en|pt)/:path*',
+    // Excluir archivos estáticos y API
+    '/((?!api|_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml|.*\\.).*)'
+  ]
 };

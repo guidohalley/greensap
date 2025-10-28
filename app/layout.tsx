@@ -1,13 +1,5 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
-import './globals.css';
-
-const inter = Inter({
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
-  variable: '--font-inter',
-  display: 'swap',
-});
+import { redirect } from 'next/navigation';
 
 export const metadata: Metadata = {
   title: 'Green Sap - Suplemento Antioxidante Natural',
@@ -21,11 +13,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (
-    <html lang="es" className={inter.variable}>
-      <body className={inter.className}>
-        {children}
-      </body>
-    </html>
-  );
+  // Redirigir a la ruta con locale por defecto
+  redirect('/es');
 }
