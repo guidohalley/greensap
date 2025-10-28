@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import { redirect } from 'next/navigation';
 
 export const metadata: Metadata = {
   title: 'Green Sap - Suplemento Antioxidante Natural',
@@ -13,6 +12,5 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // Redirigir a la ruta con locale por defecto
-  redirect('/es');
+  return children;
 }

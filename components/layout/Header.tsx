@@ -233,7 +233,7 @@ export default function Header() {
                   {t('header.user.orders')}
                 </a>
                 <button className="block w-full text-left px-4 py-3 rounded-lg text-red-600 hover:bg-red-50 transition-colors">
-                  {t('user.logout')}
+                  {t('header.user.logout')}
                 </button>
               </div>
             </div>
